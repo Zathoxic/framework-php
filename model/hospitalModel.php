@@ -1,12 +1,6 @@
 <?php
 
-function getPatient($id) 
-{
-
-}
-
-function getAllPatients() 
-{
+function getPatient($id) {
 	$db = openDatabaseConnection();
 
 	$sql = "SELECT * FROM patients";
@@ -19,13 +13,33 @@ function getAllPatients()
 
 }
 
-function editPatient() 
-{
+function getAllPatients() {
+	$db = openDatabaseConnection();
+
+	$sql = "SELECT * FROM patients";
+	$query = $db->prepare($sql);
+	$query->execute();
+
+	$db = null;
+
+	return $query->fetchAll();
 
 }
 
-function deletePatient($id) 
-{
+function editPatient($id) {
+    
+	$db = openDatabaseConnection();
+
+	$sql = "UPDATE patients SET name='$name', species='$species', status='$status', owner'$owner' WHERE id=:id ";
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		':id' => $id
+		));
+
+	$db = null;
+}
+
+function deletePatient($id) {
 	$db = openDatabaseConnection();
 
 	$sql = "DELETE FROM patients WHERE id=:id ";
@@ -37,8 +51,7 @@ function deletePatient($id)
 	$db = null;
 }
 
-function createPatient($name, $species, $status, $owner) 
-{
+function createPatient($name, $species, $status, $owner) {
 	$db = openDatabaseConnection();
 
 	$sql = "INSERT INTO patients(name, species, status, owner) VALUES (:name, :species, :status, :owner)";

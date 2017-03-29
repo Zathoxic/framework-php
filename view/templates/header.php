@@ -6,6 +6,7 @@
 	<title>Hospital</title>
 	<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<?= URL ?>css/bootstrap.min.css">
+<link rel="stylesheet" href="<?= URL ?>css/style.css">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="<?= URL ?>css/bootstrap-theme.min.css">

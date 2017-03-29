@@ -5,9 +5,9 @@
 		    <input type="text" name="name" placeholder="John Doe"><br/>
 	        <label for="species">Ras</label>
 		    <select name="species">
-			    <option value="dog">Dog</option>
-			    <option value="cat">Cat</option>	
-			    <option value="cow">Cow</option>	
+			    <option value="dog">Hond</option>
+			    <option value="cat">Kat</option>	
+			    <option value="cow">Koe</option>	
 		    </select><br/>
 	        <label for="status">Status</label>
 		    <input type="text" name="status" placeholder="Koorts"><br/>

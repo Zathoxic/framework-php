@@ -2,8 +2,7 @@
 
 require(ROOT . "model/hospitalModel.php");
 
-function index()
-{
+function index(){
 	render("hospital/index", array(
 		'hospital' => getAllPatients()
 	));
@@ -25,13 +24,15 @@ function createSave()
 	header("Location:" . URL . "hospital/index");
 }
 
-function edit()
+function edit($id)
 {
-	//$student = getStudent();
+	$patient = getPatient($id);
 
-	// getStudent(1);
+    getPatient(1);
 
-	render("hospital/edit");	
+	render("hospital/edit", array(
+            'patient' => getPatient($id)
+    ));
 }
 
 function editSave()
@@ -45,5 +46,5 @@ function delete($id)
 		deletePatient($id);
 	}
 
-	header("Location:" . URL . "hospital/index.php");
+	header("Location:" . URL . "hospital/index");
 }
