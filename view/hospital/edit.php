@@ -3,19 +3,19 @@
     <h1>Verander de gegevens van uw huisdier</h1>
     <br/>
     
-	<form action="<?= URL ?>hospital/editPatient" method="post">
+	<form method="post">
         <?php 
         foreach($patient as $patientEdit) { 
         ?>
-        <input type="hidden" value="<?= $patientEdit['id']; ?>">
+        <input type="hidden" name="id" value="<?= $patientEdit['id']; ?>">
         <label for="name">Naam:</label>
         <input type="text" name="name" value="<?= $patientEdit['name']; ?>">
         
         <label for="species">Ras:</label>
-        <select name="species" ?>">
-            <option value="dog">Hond</option>
-            <option value="cat">Kat</option>
-            <option value="cow">Koe</option>
+        <select name="species" value="<?= $patientEdit['species'];?>">
+            <option value="hond">Hond</option>
+            <option value="kat">Kat</option>
+            <option value="koe">Koe</option>
         </select>
         
         <label for="status">Status:</label>
@@ -26,6 +26,8 @@
         <br/>
         <br/>
         <?php } ?>
-        <input type="submit" value="Verzenden"></td>
+        <input type="submit" name="submit" value="Verzenden"></td>
     </form>
+    
+    <a href="' . URL . 'hospital/index"><button>Go back to home screen</button></a>
 </div>

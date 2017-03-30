@@ -15,3 +15,10 @@
 <script src="<?=  URL ?>js/bootstrap.min.js"></script>
 </head>
 <body>
+<div id="Menu">
+    <ul class="menu">
+        <li class="menu"><a href="">Clients</a></li>
+        <li class="menu"><a href="">Patients</a></li>
+        <li class="menu"><a href="">Species</a></li>
+    </ul>
+</div>

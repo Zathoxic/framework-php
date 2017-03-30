@@ -29,15 +29,25 @@ function edit($id)
 	$patient = getPatient($id);
 
     getPatient(1);
+    
+    
+	if(isset($_POST['submit'])){
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $species = $_POST['species'];
+        $status = $_POST['status'];
+        $owner = $_POST['owner'];
+        
+        editPatient($id, $name, $species, $status, $owner);
+    }
 
 	render("hospital/edit", array(
             'patient' => getPatient($id)
     ));
 }
 
-function editSave()
-{
-	
+function editSave(){
+    
 } 
 
 function delete($id)
