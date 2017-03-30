@@ -28,6 +28,4 @@
         <?php } ?>
         <input type="submit" name="submit" value="Verzenden"></td>
     </form>
-    
-    <a href="' . URL . 'patients/index"><button>Ga terug naar het begin scherm</button></a>
 </div>

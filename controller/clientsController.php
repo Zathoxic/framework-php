@@ -26,9 +26,9 @@ function createSave()
 
 function edit($id)
 {
-	$client = getClients($id);
+	$client = getClient($id);
 
-    getClient();
+    getClient($id);
     
     
 	if(isset($_POST['submit'])){
@@ -53,7 +53,7 @@ function editSave(){
 function delete($id)
 {
 	if (isset($id)) {
-		deleteClients($id);
+		deleteClient($id);
 	}
 
 	header("Location:" . URL . "clients/index");

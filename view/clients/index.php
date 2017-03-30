@@ -13,8 +13,8 @@
 			<td style=" padding:2px 5px;;"><?= $client['firstName']; ?></td>
 			<td style=" padding:2px 5px;"><?= $client['prefix']; ?></td>
 			<td style=" padding:2px 5px;"><?= $client['lastName']; ?></td>
-			<td style=" padding:2px 5px;"><a href="<?= URL ?>client/edit/<?= $client['id'] ?>">Bewerk</a></td>
-			<td style=" padding:2px 5px;"><a href="<?= URL ?>client/delete/<?= $client['id'] ?>">Verwijder</a></td>
+			<td style=" padding:2px 5px;"><a href="<?= URL ?>clients/edit/<?= $client['id'] ?>">Bewerk</a></td>
+			<td style=" padding:2px 5px;"><a href="<?= URL ?>clients/delete/<?= $client['id'] ?>">Verwijder</a></td>
 		</tr>
 		<?php } ?>
 

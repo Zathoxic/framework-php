@@ -4,7 +4,7 @@ require(ROOT . "model/speciesModel.php");
 
 function index(){
 	render("species/index", array(
-		'species' => getAllClients()
+		'species' => getAllSpecies()
 	));
 }
 
@@ -17,8 +17,8 @@ function create()
 function createSave()
 {
 
-	if (isset($_POST['firstName']) && isset($_POST['lastName'])) {
-		createClient($_POST['firstName'], $_POST['prefix'], $_POST['lastName']);
+	if (isset($_POST['species'])) {
+		createSpecies($_POST['species']);
 	}
 
 	header("Location:" . URL . "species/index");
@@ -28,17 +28,14 @@ function edit($id)
 {
 	$specie = getSpecie($id);
 
-    getSpecie();
+    getSpecie($id);
     
     
 	if(isset($_POST['submit'])){
         $id = $_POST['id'];
-        $name = $_POST['name'];
         $species = $_POST['species'];
-        $status = $_POST['status'];
-        $owner = $_POST['owner'];
         
-        editSpecie($id, $name, $species, $status, $owner);
+        editSpecie($id, $species);
     }
 
 	render("species/edit", array(

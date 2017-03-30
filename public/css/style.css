@@ -82,14 +82,14 @@ ul.menu{
     list-style: none;
 }
 
-li.menu a{
+a.menu{
     float: left;
     padding: 4px 7px;
     text-align: center;
     color: black;
 }
 
-li.menu a:hover{
+a.menu:hover{
     text-decoration: none;
     color: black;
     

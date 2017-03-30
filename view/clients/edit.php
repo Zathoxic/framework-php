@@ -5,7 +5,7 @@
     
 	<form method="post">
         <?php 
-        foreach($client as $clientEdit) { 
+        foreach($clients as $clientEdit) { 
         ?>
         <input type="hidden" name="id" value="<?= $clientEdit['id']; ?>">
         <label for="name">Voornaam:</label>
@@ -22,6 +22,4 @@
         <?php } ?>
         <input type="submit" name="submit" value="Verzenden"></td>
     </form>
-    
-    <a href="' . URL . 'clients/index"><button>Ga terug naar het begin scherm</button></a>
 </div>

@@ -28,9 +28,9 @@ function getAllSpecies() {
 
 }
 
-function editSpecies($id, $name, $species, $status, $owner) {
+function editSpecies($id, $species) {
     // Check if all inputs from the form have been entered
-    if($name && $species && $status && $owner){  
+    if($species){  
 	   $db = openDatabaseConnection();
         // Run a query to check if the species exists
         $exists = ("SELECT * FROM species WHERE id=':id'");
@@ -42,13 +42,10 @@ function editSpecies($id, $name, $species, $status, $owner) {
         $count = $query->rowCount();
         if($count != 1){
             // If there IS a species, update it
-            $sql = "UPDATE species SET name=:newname, species=:newspecies, status=:newstatus, owner=:newowner WHERE id=:existingid ";
+            $sql = "UPDATE species SET species=:newspecies WHERE id=:existingid ";
             $query = $db->prepare($sql);
             $query->execute(array(
-                ':newname' => $name,
                 ':newspecies' => $species,
-                ':newstatus' => $status,
-                ':newowner' => $owner,
                 ':existingid' => $id
             )) or die("Update could not be applied");
         $db = null;
@@ -70,16 +67,13 @@ function deleteSpecies($id) {
 	$db = null;
 }
 
-function createSpecies($name, $species, $status, $owner) {
+function createSpecies($species) {
 	$db = openDatabaseConnection();
 
-	$sql = "INSERT INTO species(name, species, status, owner) VALUES (:name, :species, :status, :owner)";
+	$sql = "INSERT INTO species (species) VALUES (:species)";
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		':name' => $name,
-		':species' => $species,
-		':status' => $status,
-        ':owner' => $owner
+		':species' => $species
 		));
 
 	$db = null;
