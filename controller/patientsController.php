@@ -1,17 +1,17 @@
 <?php
 
-require(ROOT . "model/hospitalModel.php");
+require(ROOT . "model/patientModel.php");
 
 function index(){
-	render("hospital/index", array(
-		'hospital' => getAllPatients()
+	render("patients/index", array(
+		'patients' => getAllPatients()
 	));
 }
 
 function create()
 {
 	//formulier tonen
-	render("hospital/create");
+	render("patients/create");
 }
 
 function createSave()
@@ -21,7 +21,7 @@ function createSave()
 		createPatient($_POST['name'], $_POST['species'], $_POST['status'], $_POST['owner']);
 	}
 
-	header("Location:" . URL . "hospital/index");
+	header("Location:" . URL . "patients/index");
 }
 
 function edit($id)
@@ -41,7 +41,7 @@ function edit($id)
         editPatient($id, $name, $species, $status, $owner);
     }
 
-	render("hospital/edit", array(
+	render("patients/edit", array(
             'patient' => getPatient($id)
     ));
 }
@@ -56,5 +56,5 @@ function delete($id)
 		deletePatient($id);
 	}
 
-	header("Location:" . URL . "hospital/index");
+	header("Location:" . URL . "patients/index");
 }

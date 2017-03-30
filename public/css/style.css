@@ -84,7 +84,7 @@ ul.menu{
 
 li.menu a{
     float: left;
-    padding: 4px 10px;
+    padding: 4px 7px;
     text-align: center;
     color: black;
 }
@@ -96,8 +96,9 @@ li.menu a:hover{
 }
 
 li.menu{
-    width: 75px;
+    width: 100px;
     height: 2em;
+    margin-left: 10px;
     background-color: #ccc;
     float: left;
     border-radius: 50px;

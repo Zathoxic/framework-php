@@ -17,8 +17,8 @@
 <body>
 <div id="Menu">
     <ul class="menu">
-        <li class="menu"><a href="">Clients</a></li>
-        <li class="menu"><a href="">Patients</a></li>
-        <li class="menu"><a href="">Species</a></li>
+        <li class="menu"><a href="/frameworkPHP/clients">Clienten</a></li>
+        <li class="menu"><a href="/frameworkPHP/patients">Patienten</a></li>
+        <li class="menu"><a href="/frameworkPHP/species">Dieren</a></li>
     </ul>
 </div>

@@ -3,9 +3,11 @@
 function getPatient($id) {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM patients";
+	$sql = "SELECT * FROM patients WHERE id=:id";
 	$query = $db->prepare($sql);
-	$query->execute();
+	$query->execute(array(
+        ':id' => $id
+    ));
 
 	$db = null;
 

@@ -1,13 +1,14 @@
 <div class="container">
-	<form action="<?= URL ?>hospital/createSave" method="post">
+<h1>Registreer een nieuwe client aan de database</h1>
+	<form action="<?= URL ?>patients/createSave" method="post">
 	    <tr>
 	        <label for="name">Naam</label>
 		    <input type="text" name="name" placeholder="John Doe"><br/>
 	        <label for="species">Ras</label>
 		    <select name="species">
-			    <option value="dog">Hond</option>
-			    <option value="cat">Kat</option>	
-			    <option value="cow">Koe</option>	
+			    <option value="Hond">Hond</option>
+			    <option value="Kat">Kat</option>	
+			    <option value="Koe">Koe</option>	
 		    </select><br/>
 	        <label for="status">Status</label>
 		    <input type="text" name="status" placeholder="Koorts"><br/>
