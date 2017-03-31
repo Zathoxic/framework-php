@@ -1,6 +1,8 @@
 <?php
 
+require(ROOT . "model/patientModel.php");
 require(ROOT . "model/clientModel.php");
+require(ROOT . "model/speciesModel.php");
 
 function index(){
 	render("clients/index", array(
@@ -8,14 +10,12 @@ function index(){
 	));
 }
 
-function create()
-{
+function create(){
 	//formulier tonen
 	render("clients/create");
 }
 
-function createSave()
-{
+function createSave(){
 
 	if (isset($_POST['firstName']) && isset($_POST['lastName'])) {
 		createClient($_POST['firstName'], $_POST['prefix'], $_POST['lastName']);
@@ -24,8 +24,7 @@ function createSave()
 	header("Location:" . URL . "clients/index");
 }
 
-function edit($id)
-{
+function edit($id){
 	$client = getClient($id);
 
     getClient($id);
@@ -33,12 +32,11 @@ function edit($id)
     
 	if(isset($_POST['submit'])){
         $id = $_POST['id'];
-        $name = $_POST['name'];
-        $species = $_POST['species'];
-        $status = $_POST['status'];
-        $owner = $_POST['owner'];
+        $firstName = $_POST['firstName'];
+        $prefix = $_POST['prefix'];
+        $lastName = $_POST['lastName'];
         
-        editClient($id, $name, $species, $status, $owner);
+        editClient($id, $firstName, $prefix, $lastName);
     }
 
 	render("clients/edit", array(
@@ -50,8 +48,7 @@ function editSave(){
     
 } 
 
-function delete($id)
-{
+function delete($id){
 	if (isset($id)) {
 		deleteClient($id);
 	}

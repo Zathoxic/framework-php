@@ -7,6 +7,7 @@
         foreach($species as $speciesEdit) {
         ?>
 	    <tr>
+        <input type="hidden" value="<?= $speciesEdit['id'] ?>">
 	        <label for="species">Diersoort</label>
 		    <input type="text" name="species" value="<?= $speciesEdit['species']; ?>"><br/>
 	        

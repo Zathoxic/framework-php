@@ -1,5 +1,7 @@
 <?php
 
+require(ROOT . "model/patientModel.php");
+require(ROOT . "model/clientModel.php");
 require(ROOT . "model/speciesModel.php");
 
 function index(){
@@ -8,14 +10,12 @@ function index(){
 	));
 }
 
-function create()
-{
+function create(){
 	//formulier tonen
 	render("species/create");
 }
 
-function createSave()
-{
+function createSave(){
 
 	if (isset($_POST['species'])) {
 		createSpecies($_POST['species']);
@@ -24,18 +24,16 @@ function createSave()
 	header("Location:" . URL . "species/index");
 }
 
-function edit($id)
-{
+function edit($id){
 	$specie = getSpecie($id);
 
     getSpecie($id);
     
     
 	if(isset($_POST['submit'])){
-        $id = $_POST['id'];
         $species = $_POST['species'];
         
-        editSpecie($id, $species);
+        editSpecies($id, $species);
     }
 
 	render("species/edit", array(
@@ -47,8 +45,7 @@ function editSave(){
     
 } 
 
-function delete($id)
-{
+function delete($id){
 	if (isset($id)) {
 		deleteSpecies($id);
 	}

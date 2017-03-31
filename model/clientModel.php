@@ -30,7 +30,7 @@ function getAllClients() {
 
 function editClient($id, $firstName, $prefix, $lastName) {
     // Check if all inputs from the form have been entered
-    if($name && $species && $status && $owner){  
+    if($firstName && $lastName){  
 	   $db = openDatabaseConnection();
         // Run a query to check if the client exists
         $exists = ("SELECT * FROM clients WHERE id=':id'");
@@ -42,7 +42,7 @@ function editClient($id, $firstName, $prefix, $lastName) {
         $count = $query->rowCount();
         if($count != 1){
             // If there IS a client, update it
-            $sql = "UPDATE clients SET firstName=:newfirstName, prefix=:newpreFix, lastName=:newlastName WHERE id=:existingid ";
+            $sql = "UPDATE clients SET firstName=:newfirstName, prefix=:newprefix, lastName=:newlastName WHERE id=:existingid ";
             $query = $db->prepare($sql);
             $query->execute(array(
                 ':newfirstName' => $firstName,

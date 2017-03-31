@@ -15,10 +15,16 @@ function getPatient($id) {
 
 }
 
-function getAllPatients() {
+function getAllPatients($order, $sort) {
 	$db = openDatabaseConnection();
 
 	$sql = "SELECT * FROM patients";
+    
+    if(isset($order)&&isset($sort)){
+        $sql .= ' ORDER BY ' . $order .  ' ' . $sort;
+    }
+    
+    
 	$query = $db->prepare($sql);
 	$query->execute();
 
@@ -28,10 +34,27 @@ function getAllPatients() {
 
 }
 
-function editPatient($id, $name, $species, $status, $owner) {
+function orderPatients(){
+    // Create database connection
+    $db = openDatabaseConnection();
+}
+
+
+
+function editPatient($id, $name, $species, $status, $owner, $gender) {
+    // Create database connection
+    $db = openDatabaseConnection();
+    
+    // Get all clients
+    $ownerQuery = ("SELECT * FROM clients");
+    $query = $db->prepare($ownerQuery);
+    $query->execute();
+    
+    
+    
     // Check if all inputs from the form have been entered
-    if($name && $species && $status && $owner){  
-	   $db = openDatabaseConnection();
+    if($name && $species && $status && $owner && $gender){  
+        
         // Run a query to check if the patient exists
         $exists = ("SELECT * FROM patients WHERE id=':id'");
         $query = $db->prepare($exists);
@@ -41,14 +64,16 @@ function editPatient($id, $name, $species, $status, $owner) {
         
         $count = $query->rowCount();
         if($count != 1){
+            
             // If there IS a patient, update it
-            $sql = "UPDATE patients SET name=:newname, species=:newspecies, status=:newstatus, owner=:newowner WHERE id=:existingid ";
+            $sql = "UPDATE patients SET name=:newname, species=:newspecies, status=:newstatus, owner=:newowner, gender:newgender WHERE id=:existingid ";
             $query = $db->prepare($sql);
             $query->execute(array(
                 ':newname' => $name,
                 ':newspecies' => $species,
                 ':newstatus' => $status,
                 ':newowner' => $owner,
+                ':newgender' => $gender,
                 ':existingid' => $id
             )) or die("Update could not be applied");
         $db = null;
@@ -70,16 +95,17 @@ function deletePatient($id) {
 	$db = null;
 }
 
-function createPatient($name, $species, $status, $owner) {
+function createPatient($name, $species, $status, $owner, $gender) {
 	$db = openDatabaseConnection();
 
-	$sql = "INSERT INTO patients(name, species, status, owner) VALUES (:name, :species, :status, :owner)";
+	$sql = "INSERT INTO patients(name, species, status, owner, gender) VALUES (:name, :species, :status, :owner, :gender)";
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		':name' => $name,
 		':species' => $species,
 		':status' => $status,
-        ':owner' => $owner
+        ':owner' => $owner,
+        ':gender' => $gender
 		));
 
 	$db = null;
