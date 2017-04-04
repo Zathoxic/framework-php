@@ -11,7 +11,7 @@ td,tr, table{
 
 th{
     border: none;
-    border-left: 1px solid black;    
+    border-left: 1px solid black;
     padding-right: 10px;
     padding-left: 4px;
 }
@@ -22,7 +22,7 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
     background: #FFF /* Even row */
-} 
+}
 
 form{
     width: 300px;
@@ -99,7 +99,7 @@ a.menu{
 a.menu:hover{
     text-decoration: none;
     color: black;
-    
+
 }
 
 li.menu{
@@ -124,4 +124,29 @@ li.menu:hover{
 .xdebug-var-dump{
     min-width: 300px;
     min-height: 300px;
+}
+
+
+/* Login System */
+
+#loginContainer{
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+form#Login{
+    float: left;
+    width: 350px;
+}
+
+#Login input[type="text"]{
+    float: right;
+    clear: right;
+}
+
+#Login label{
+    float: left;
+    clear: left;
 }

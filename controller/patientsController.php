@@ -5,7 +5,7 @@ require(ROOT . "model/clientModel.php");
 require(ROOT . "model/speciesModel.php");
 
 function index(){
-    
+
     if(isset($_GET['order'])){
         $order = $_GET['order'];
     } else{
@@ -16,20 +16,21 @@ function index(){
     } else{
         $sort = 'DESC';
     }
-    
+
     $sort == 'DESC' ? $sort = 'ASC' : $sort = 'DESC';
-    
+
 	render("patients/index", array(
 		'patients' => getAllPatients($order, $sort),
         'order' => $order,
+        'sortAllPatients' => sortAllPatients($order, $sort),
         'sort' => $sort
 	));
 }
 
 function create(){
+
 	//formulier tonen
 	render("patients/create", array(
-            'patient' => getPatient($id),
             'patients' => getAllPatients(),
             'clients' => getAllClients(),
             'species' => getAllSpecies()
@@ -50,8 +51,8 @@ function edit($id){
 	$patient = getPatient($id);
 
     getPatient($id);
-    
-    
+
+
 	if(isset($_POST['submit'])){
         $id = $_POST['id'];
         $name = $_POST['name'];
@@ -59,21 +60,21 @@ function edit($id){
         $status = $_POST['status'];
         $owner = $_POST['owner'];
         $gender = $_POST['gender'];
-        
+
         editPatient($id, $name, $species, $status, $owner, $gender);
     }
 
 	render("patients/edit", array(
             'patient' => getPatient($id),
-            'patients' => getAllPatients(),
+            'patients' => getAllPatients($order, $sort),
             'clients' => getAllClients(),
             'species' => getAllSpecies()
     ));
 }
 
 function editSave(){
-    
-} 
+
+}
 
 function delete($id){
 	if (isset($id)) {
